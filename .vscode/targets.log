@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun 14 19:14:52 2022
+# Make data base, printed on Tue Jun 14 22:11:39 2022
 
 # Variables
 
@@ -27,7 +27,7 @@ USERPROFILE = C:\Users\LENOVO
 # environment
 LOCALAPPDATA = C:\Users\LENOVO\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-bb67fb68-223b-4d01-a233-ebc3ff5757f1-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-d43b1e2b-213c-40df-9f1a-4074ce8a4df8-sock
 # environment
 VSCODE_CWD = C:\Users\LENOVO\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -45,7 +45,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
 DOKANLIBRARY1_LIBRARYPATH_X64 = C:\Program Files\Dokan\Dokan Library-1.4.0\lib\
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_31656_GSGAOAJCYETEWBMZ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_33252_OMZPPTKJRGJHZHEV
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -105,7 +105,7 @@ PT8HOME = C:\Program Files\Cisco Packet Tracer 8.0.1
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 31656
+VSCODE_PID = 33252
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -330,6 +330,6 @@ down:
 # strcache performance: lookups = 46 / hit rate = 50%
 # hash-table stats:
 # Load=23/8192=0%, Rehash=0, Collisions=0/46=0%
-# Finished Make data base on Tue Jun 14 19:14:52 2022
+# Finished Make data base on Tue Jun 14 22:11:39 2022
 
  
