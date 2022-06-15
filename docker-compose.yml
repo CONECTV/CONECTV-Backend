@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  conectv:
+    build: ./
+    command: npm run start-test
+    volumes: 
+      - ./:/usr/src/app
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
+    depends_on:
+      - conectv-db
+
+  conectv-db:
+    image: mysql:latest
+    env_file:
+      - ./.env
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
