@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/db_connection');
+const SuscriptorData = require('./suscriptorData');
 
 const ClientStatus = sequelize.define('clientStatus', {
     id: {
@@ -14,5 +15,9 @@ const ClientStatus = sequelize.define('clientStatus', {
         allowNull: false
     },
 });
+
+// * Relationship between SuscriptorData and ClientStatus
+ClientStatus.hasOne(SuscriptorData);
+SuscriptorData.belongsTo(ClientStatus);
 
 module.exports = ClientStatus;
