@@ -11,26 +11,16 @@ const ClientAccountStatus = sequelize.define('clientAccountStatus', {
         allowNull: false,
         primaryKey: true
     },
-    idSuscriptor: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: SuscriptorData,
-            key: 'id'
-        }
-    },
     total: {
         type: Sequelize.FLOAT,
         allowNull: false
-    },
-    status: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: AccountStatus,
-            key: 'id'
-        }
     }
 });
+
+SuscriptorData.hasOne(ClientAccountStatus)
+ClientAccountStatus.belongsTo(SuscriptorData)
+
+AccountStatus.hasMany(ClientAccountStatus);
+ClientAccountStatus.belongsTo(AccountStatus);
 
 module.exports = ClientAccountStatus;

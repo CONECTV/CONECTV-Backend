@@ -10,14 +10,6 @@ const PaymentHistory = sequelize.define('paymentHistory', {
         allowNull: false,
         primaryKey: true
     },
-    idSuscriptor: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: SuscriptorData,
-            key: 'id'
-        }
-    },
     concept: {
         type: Sequelize.TEXT,
         allowNull: false
@@ -31,5 +23,9 @@ const PaymentHistory = sequelize.define('paymentHistory', {
         allowNull: false
     }
 });
+
+SuscriptorData.hasMany(PaymentHistory);
+PaymentHistory.belongsTo(SuscriptorData);
+
 
 module.exports = PaymentHistory;

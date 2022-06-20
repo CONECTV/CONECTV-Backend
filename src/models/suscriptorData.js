@@ -2,8 +2,6 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/db_connection');
 const Localities = require('./localities');
-const AvailableServices = require('./availableServices');
-const ClientStatus = require('./clientStatus');
 
 const SuscriptorData = sequelize.define('suscriptorData', {
     id: {
@@ -27,14 +25,6 @@ const SuscriptorData = sequelize.define('suscriptorData', {
     lastPaternalName:{
         type: Sequelize.TEXT,
         allowNull: false
-    },
-    locality: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: Localities,
-            key: 'id'
-        }
     },
     colony:{
         type: Sequelize.TEXT,
@@ -68,26 +58,14 @@ const SuscriptorData = sequelize.define('suscriptorData', {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    contractedservice: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: AvailableServices,
-            key: 'id'
-        }
-    },
     rfc:{
         type: Sequelize.TEXT,
         allowNull: false
-    },
-    clientStatus: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: ClientStatus,
-            key: 'id'
-        }
     }
 });
+
+// * Relationship between SuscriptorData and Localities
+Localities.hasMany(SuscriptorData);
+SuscriptorData.belongsTo(Localities);
 
 module.exports = SuscriptorData;

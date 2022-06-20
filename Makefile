@@ -1,11 +1,14 @@
 .DEFAULT_GOAL := help
 
+#BEFORE UP KILL PROCESS
+# netstat -ano | findstr :3306
+# taskkill /pid <PID> /F 
 .PHONY: up
 up:
 	@docker-compose up -d
 	@docker-compose logs -f -t
 .PHONY: stop
-stop:
+stop: 
 	@docker-compose stop
 .PHONY: down
 down:

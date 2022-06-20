@@ -15,7 +15,22 @@ server.listen(port, hostname, () => {
 
 
 var models = [
-  'user'
+  'user',
+  'technicalServiceStatus',
+  'technicalServicesHistory',
+  'technicalServices',
+  'suscriptorData',
+  'paymentHistory',
+  'localities',
+  'internetTariffs',
+  'instalationData',
+  'clientStatus',
+  'clientAcccountStatus',
+  'cableTariffs',
+  'availableServices',
+  'availableCharges',
+  'availableAbono',
+  'accountStatus'
 ];
 
 models.forEach(function (model) {
