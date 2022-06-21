@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../configs/db_connection');
+const sequelize = require('../../configs/db_connection');
 const Localities = require('./localities');
 
 const SuscriptorData = sequelize.define('suscriptorData', {

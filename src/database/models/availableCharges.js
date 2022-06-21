@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../configs/db_connection');
+const sequelize = require('../../configs/db_connection');
 
-const TechnicalServices = sequelize.define('technicalServices', {
+const AvailableCharges = sequelize.define('availableCharges', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -12,7 +12,11 @@ const TechnicalServices = sequelize.define('technicalServices', {
     name: {
         type: Sequelize.TEXT,
         allowNull: false
+    },
+    price: {
+        type: Sequelize.FLOAT,
+        allowNull: false
     }
 });
 
-module.exports = TechnicalServices;
+module.exports = AvailableCharges;

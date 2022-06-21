@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../configs/db_connection');
+const sequelize = require('../../configs/db_connection');
 
-const AccountStatus = sequelize.define('accountStatus', {
+const TechnicalServiceStatus = sequelize.define('technicalServiceStatus', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -11,8 +11,8 @@ const AccountStatus = sequelize.define('accountStatus', {
     },
     status: {
         type: Sequelize.TEXT,
-        allowNull: false
-    }
+        allowNull: false,
+    },
 });
 
-module.exports = AccountStatus;
+module.exports = TechnicalServiceStatus;

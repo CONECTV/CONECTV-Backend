@@ -1,15 +1,11 @@
 const sequelize = require('./src/configs/db_connection')
-const http = require('http');
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 8080;
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hola Mundo');
-});
+const express = require('express');
+const app = express()
 
-server.listen(port, hostname, () => {
+app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
 });
 

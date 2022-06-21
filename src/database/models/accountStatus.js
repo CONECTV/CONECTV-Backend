@@ -1,22 +1,18 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../configs/db_connection');
+const sequelize = require('../../configs/db_connection');
 
-const AvailableCharges = sequelize.define('availableCharges', {
+const AccountStatus = sequelize.define('accountStatus', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    name: {
+    status: {
         type: Sequelize.TEXT,
-        allowNull: false
-    },
-    price: {
-        type: Sequelize.FLOAT,
         allowNull: false
     }
 });
 
-module.exports = AvailableCharges;
+module.exports = AccountStatus;
