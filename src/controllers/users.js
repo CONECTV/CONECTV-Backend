@@ -1,17 +1,33 @@
 //ALL HANDLERS FROM OUR ROUTES
-import { db } from '../database/connection.js'
+const User = require('../database/models/user')
 
-export const getUsuarios = async (req, res) => {
+exports.getUser  =  (req, res) => {
     try {
-        const [rows, fields] = await db.query('SELECT * FROM DatosSuscriptor');
-        res.status(200).json(rows);
+        const users = User.findAll();
+        console.log(users.every(user => user instanceof User)); // true
+        console.log("All users:", JSON.stringify(users, null, 2));
     } catch (error) {
         console.log('Ocurrio un error en el get')
     }
-
-    
 };
 
-export const createUsuario = (req, res) => {
+exports.createUsuario = (req, res) => {
     res.send('Nuevo user');
 };
+
+
+exports.createUser =  (req, res) => {
+    try {
+        const createUser =  User.create(
+            {
+                name: "Rafa",
+                password: "2"
+            }
+
+        )
+        console.log(createUser.name)
+        res.send();
+    } catch (error) {
+        console.log(error.message)
+    }
+}
