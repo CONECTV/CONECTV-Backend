@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../../configs/db_connection');
-const AccountStatus = require('./accountStatus');
+const sequelize = require('../configs/db_connection');
 const SuscriptorData = require('./suscriptorData');
 const TechnicalServices = require('./technicalServices');
 const TechnicalServiceStatus = require('./technicalServiceStatus');

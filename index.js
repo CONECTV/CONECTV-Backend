@@ -1,4 +1,4 @@
-const sequelize = require('./src/configs/db_connection')
+const sequelize = require('./src/database/configs/db_connection')
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 8080;
 
@@ -30,7 +30,7 @@ var models = [
 ];
 
 models.forEach(function (model) {
-  module.exports[model] = require('./src/models' + '/' + model);
+  module.exports[model] = require('./src/database/models' + '/' + model);
 })
 
 async function ModelCreation () {
