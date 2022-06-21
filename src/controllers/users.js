@@ -1,11 +1,13 @@
 //ALL HANDLERS FROM OUR ROUTES
 const User = require('../database/models/user')
 
-exports.getUser  =  (req, res) => {
+exports.getUser  =  async (req, res) => {
     try {
-        const users = User.findAll();
+        const users = await User.findAll();
         console.log(users.every(user => user instanceof User)); // true
         console.log("All users:", JSON.stringify(users, null, 2));
+
+        res.send();
     } catch (error) {
         console.log('Ocurrio un error en el get')
     }
