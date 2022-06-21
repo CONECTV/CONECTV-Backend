@@ -42,7 +42,7 @@ models.forEach(function (model) {
 })
 
 async function ModelCreation () {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ alter: true });
 }
 ModelCreation()
 
