@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/db_connection');
-const AccountStatus = require('./accountStatus');
 const SuscriptorData = require('./suscriptorData');
 const TechnicalServices = require('./technicalServices');
 const TechnicalServiceStatus = require('./technicalServiceStatus');
@@ -13,33 +12,9 @@ const TechnicalServicesHistory = sequelize.define('technicalServicesHistory', {
         allowNull: false,
         primaryKey: true
     },
-    idSuscriptor: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: SuscriptorData,
-            key: 'id'
-        }
-    },
-    idTechnicalService:{
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: TechnicalServices,
-            key: 'id'
-        }
-    },
     commentary: {
         type: Sequelize.TEXT,
         allowNull: false
-    },
-    statusTechnicalService: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: TechnicalServiceStatus,
-            key: 'id'
-        }
     },
     startDate:{
         type: Sequelize.DATE,
@@ -49,5 +24,15 @@ const TechnicalServicesHistory = sequelize.define('technicalServicesHistory', {
         type: Sequelize.DATE,
     }
 });
+
+
+SuscriptorData.hasMany(TechnicalServicesHistory);
+TechnicalServicesHistory.belongsTo(SuscriptorData);
+
+TechnicalServicesHistory.hasMany(TechnicalServices)
+TechnicalServices.belongsTo(TechnicalServicesHistory)
+
+TechnicalServicesHistory.hasMany(TechnicalServiceStatus)
+TechnicalServiceStatus.belongsTo(TechnicalServicesHistory)
 
 module.exports = TechnicalServicesHistory;

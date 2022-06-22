@@ -1,26 +1,23 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/db_connection');
+const SuscriptorData = require('./suscriptorData');
 
-const Localities = sequelize.define('localities', {
+const ClientStatus = sequelize.define('clientStatus', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    localidad: {
+    state: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    cuttingDat: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    internet: {
-        type: Sequelize.BOOLEAN,
-        ALLOW_NULL: false
-    }
 });
 
-module.exports = Localities;
+// * Relationship between SuscriptorData and ClientStatus
+ClientStatus.hasOne(SuscriptorData);
+SuscriptorData.belongsTo(ClientStatus);
+
+module.exports = ClientStatus;
