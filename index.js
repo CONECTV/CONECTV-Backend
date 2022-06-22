@@ -9,6 +9,7 @@ const app = express()
 const userRoutes = require('./src/routes/users')
 const cableTariffRoutes = require('./src/routes/cableTriffs')
 const internetTariffRoutes = require('./src/routes/internetTariffs')
+const availableChargesRoutes = require('./src/routes/availableCharges')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use(function(req, res, next) {
 app.use('/users', userRoutes);
 app.use('/cableTariffs', cableTariffRoutes);
 app.use('/internetTariffs', internetTariffRoutes);
+app.use('/availableCharges', availableChargesRoutes);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
