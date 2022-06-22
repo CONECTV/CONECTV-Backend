@@ -1,34 +1,23 @@
-//ALL HANDLERS FROM OUR ROUTES
 const User = require('../database/models/user')
 
 exports.getUser  =  async (req, res) => {
     try {
         const users = await User.findAll();
-        console.log(users.every(user => user instanceof User)); // true
-        console.log("All users:", JSON.stringify(users, null, 2));
-
-        res.send();
+        res.status(200).send(JSON.stringify(users));
     } catch (error) {
         console.log('Ocurrio un error en el get')
     }
 };
 
-exports.createUsuario = (req, res) => {
-    res.send('Nuevo user');
-};
-
-
-exports.createUser =  (req, res) => {
+exports.createUser =  async (req, res) => {
     try {
-        const createUser =  User.create(
+        const _userCreation =  await User.create(
             {
-                name: "Rafa",
-                password: "2"
+                name: req.body.name,
+                password: req.body.password
             }
-
         )
-        console.log(createUser.name)
-        res.send();
+        res.status(201).send(`user ${req.body.name} was successfully created`);
     } catch (error) {
         console.log(error.message)
     }
