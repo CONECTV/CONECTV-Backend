@@ -8,6 +8,7 @@ const cors = require('cors');
 const app = express()
 const userRoutes = require('./src/routes/users')
 const cableTariffRoutes = require('./src/routes/cableTriffs')
+const internetTariffRoutes = require('./src/routes/internetTariffs')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -22,6 +23,7 @@ app.use(function(req, res, next) {
 
 app.use('/users', userRoutes);
 app.use('/cableTariffs', cableTariffRoutes);
+app.use('/internetTariffs', internetTariffRoutes);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
