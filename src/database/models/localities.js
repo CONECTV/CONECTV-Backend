@@ -9,7 +9,7 @@ const Localities = sequelize.define('localities', {
         allowNull: false,
         primaryKey: true
     },
-    localidad: {
+    locality: {
         type: Sequelize.TEXT,
         allowNull: false
     },
