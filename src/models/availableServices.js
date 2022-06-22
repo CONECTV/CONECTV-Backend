@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/db_connection');
-const SuscriptorData = require('./suscriptorData');
 
 const AvailableServices = sequelize.define('availableServices', {
     id: {
@@ -19,9 +18,5 @@ const AvailableServices = sequelize.define('availableServices', {
         allowNull: false
     }
 });
-
-// * Relationship between SuscriptorData and AvailableServices
-AvailableServices.hasOne(SuscriptorData);
-SuscriptorData.belongsTo(AvailableServices);
 
 module.exports = AvailableServices;

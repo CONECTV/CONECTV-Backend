@@ -1,11 +1,14 @@
-const express = require('express');
-const getUsuarios = require('../controllers/users');
-const createUser = require('../controllers/users');
+import express from 'express';
+
+import { getUsuarios, createUsuario } from '../controllers/users.js';
 
 const router = express.Router();
 
-//localhost:5000/users
-router.post('/create', createUser.createUser);
-router.get('/get', getUsuarios.getUser);
+//We added the prefix of users
 
-module.exports = router;
+//localhost:5000/users
+router.get('/suscriptores', getUsuarios);
+
+router.post('/suscriptor', createUsuario);
+
+export default router;

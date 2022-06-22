@@ -1,4 +1,5 @@
-const sequelize = require('./src/database/configs/db_connection')
+const sequelize = require('./src/configs/db_connection')
+const http = require('http');
 const hostname = '127.0.0.1';
 const port = 8000;
 
@@ -30,34 +31,22 @@ app.use('/internetTariffs', internetTariffRoutes);
 app.use('/availableCharges', availableChargesRoutes);
 app.use('/availableAbonos', availableAbonos);
 
-app.listen(port, () => {
+
+server.listen(port, hostname, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
 });
+
+
 var models = [
-  'user',
-  'technicalServiceStatus',
-  'technicalServicesHistory',
-  'technicalServices',
-  'suscriptorData',
-  'paymentHistory',
-  'localities',
-  'internetTariffs',
-  'instalationData',
-  'clientStatus',
-  'clientAcccountStatus',
-  'cableTariffs',
-  'availableServices',
-  'availableCharges',
-  'availableAbono',
-  'accountStatus'
+  'user'
 ];
 
 models.forEach(function (model) {
-  module.exports[model] = require('./src/database/models' + '/' + model);
+  module.exports[model] = require('./src/models' + '/' + model);
 })
 
 async function ModelCreation () {
-  await sequelize.sync({ alter: true });
+  await sequelize.sync({ force: true });
 }
 ModelCreation()
 

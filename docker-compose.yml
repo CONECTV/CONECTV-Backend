@@ -15,7 +15,6 @@ services:
 
   conectv-db:
     image: mysql:latest
-    platform: linux/x86_64
     env_file:
       - ./.env
     ports:
