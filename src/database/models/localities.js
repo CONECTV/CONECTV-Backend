@@ -13,8 +13,8 @@ const Localities = sequelize.define('localities', {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    cuttingDat: {
-        type: Sequelize.TEXT,
+    cuttingDate: {
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     internet: {

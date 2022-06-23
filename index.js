@@ -13,6 +13,9 @@ const internetTariffRoutes = require('./src/routes/internetTariffs')
 const availableChargesRoutes = require('./src/routes/availableCharges')
 const availableAbonos = require('./src/routes/availableAbonos')
 const accountStatus = require('./src/routes/accountStatus')
+const clientStatuses = require('./src/routes/clientStatus')
+const availableServices = require('./src/routes/availableServices')
+const localities = require('./src/routes/localities')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +34,9 @@ app.use('/internetTariffs', internetTariffRoutes);
 app.use('/availableCharges', availableChargesRoutes);
 app.use('/availableAbonos', availableAbonos);
 app.use('/accountStatus', accountStatus);
+app.use('/clientStatuses', clientStatuses);
+app.use('/availableServices', availableServices);
+app.use('/localities', localities);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
