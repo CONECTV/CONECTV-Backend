@@ -12,6 +12,7 @@ const cableTariffRoutes = require('./src/routes/cableTriffs')
 const internetTariffRoutes = require('./src/routes/internetTariffs')
 const availableChargesRoutes = require('./src/routes/availableCharges')
 const availableAbonos = require('./src/routes/availableAbonos')
+const clientStatuses = require('./src/routes/clientStatus')
 const availableServices = require('./src/routes/availableServices')
 const localities = require('./src/routes/localities')
 
@@ -31,6 +32,7 @@ app.use('/cableTariffs', cableTariffRoutes);
 app.use('/internetTariffs', internetTariffRoutes);
 app.use('/availableCharges', availableChargesRoutes);
 app.use('/availableAbonos', availableAbonos);
+app.use('/clientStatuses', clientStatuses);
 app.use('/availableServices', availableServices);
 app.use('/localities', localities);
 
