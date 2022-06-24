@@ -16,6 +16,7 @@ const accountStatus = require('./src/routes/accountStatus')
 const clientStatuses = require('./src/routes/clientStatus')
 const availableServices = require('./src/routes/availableServices')
 const localities = require('./src/routes/localities')
+const suscriptorData = require('./src/routes/suscriptorData')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,6 +38,7 @@ app.use('/accountStatus', accountStatus);
 app.use('/clientStatuses', clientStatuses);
 app.use('/availableServices', availableServices);
 app.use('/localities', localities);
+app.use('/suscriptorData', suscriptorData);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
