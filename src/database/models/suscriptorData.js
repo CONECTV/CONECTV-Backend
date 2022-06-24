@@ -51,7 +51,7 @@ const SuscriptorData = sequelize.define('suscriptorData', {
         allowNull: false
     },
     telephone: {
-        type: Sequelize.TEXT,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     emailAddress: {
