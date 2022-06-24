@@ -21,6 +21,7 @@ const instalationData = require('./src/routes/instalationData')
 const technicalServicesHistory = require('./src/routes/technicalServicesHistory')
 const technicalServiceStatus = require('./src/routes/technicalServiceStatus')
 const technicalServices = require('./src/routes/technicalServices')
+const paymentHistories = require('./src/routes/paymentHistories')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,6 +48,7 @@ app.use('/instalationData', instalationData);
 app.use('/technicalServicesHistory', technicalServicesHistory);
 app.use('/technicalServiceStatus', technicalServiceStatus);
 app.use('/technicalServices', technicalServices);
+app.use('/paymentHistories', paymentHistories);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
