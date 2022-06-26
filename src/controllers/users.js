@@ -1,24 +1,17 @@
-const User = require('../database/models/user')
+//ALL HANDLERS FROM OUR ROUTES
+import { db } from '../database/connection.js'
 
-exports.getUser  =  async (req, res) => {
+export const getUsuarios = async (req, res) => {
     try {
-        const users = await User.findAll();
-        res.status(200).send(JSON.stringify(users));
+        const [rows, fields] = await db.query('SELECT * FROM DatosSuscriptor');
+        res.status(200).json(rows);
     } catch (error) {
         console.log('Ocurrio un error en el get')
     }
+
+    
 };
 
-exports.createUser =  async (req, res) => {
-    try {
-        const _userCreation =  await User.create(
-            {
-                name: req.body.name,
-                password: req.body.password
-            }
-        )
-        res.status(201).send(`user ${req.body.name} was successfully created`);
-    } catch (error) {
-        console.log(error.message)
-    }
-}
+export const createUsuario = (req, res) => {
+    res.send('Nuevo user');
+};

@@ -2,25 +2,21 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/db_connection');
 
-const Localities = sequelize.define('localities', {
+const AvailableServices = sequelize.define('availableServices', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    locality: {
+    name: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    cuttingDate: {
-        type: Sequelize.INTEGER,
+    monthlyPrice: {
+        type: Sequelize.FLOAT,
         allowNull: false
-    },
-    internet: {
-        type: Sequelize.BOOLEAN,
-        ALLOW_NULL: false
     }
 });
 
-module.exports = Localities;
+module.exports = AvailableServices;

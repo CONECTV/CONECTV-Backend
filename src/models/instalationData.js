@@ -10,6 +10,14 @@ const InstalationData = sequelize.define('instalationData', {
         allowNull: false,
         primaryKey: true
     },
+    idSuscriptor: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: SuscriptorData,
+            key: 'id'
+        }
+    },
     instalationDate: {
         type: Sequelize.DATE,
         allowNull: false
@@ -33,8 +41,5 @@ const InstalationData = sequelize.define('instalationData', {
         type: Sequelize.INTEGER,
     }
 });
-
-SuscriptorData.hasOne(InstalationData)
-InstalationData.belongsTo(SuscriptorData)
 
 module.exports = InstalationData;
