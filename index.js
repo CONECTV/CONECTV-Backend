@@ -11,24 +11,24 @@ const userRoutes = require('./src/routes/users')
 const cableTariffRoutes = require('./src/routes/cableTriffs')
 const internetTariffRoutes = require('./src/routes/internetTariffs')
 const availableChargesRoutes = require('./src/routes/availableCharges')
-const availableAbonos = require('./src/routes/availableAbonos')
-const accountStatus = require('./src/routes/accountStatus')
-const clientStatuses = require('./src/routes/clientStatus')
-const availableServices = require('./src/routes/availableServices')
-const localities = require('./src/routes/localities')
-const suscriptorData = require('./src/routes/suscriptorData')
-const instalationData = require('./src/routes/instalationData')
-const technicalServicesHistory = require('./src/routes/technicalServicesHistory')
-const technicalServiceStatus = require('./src/routes/technicalServiceStatus')
-const technicalServices = require('./src/routes/technicalServices')
-const paymentHistories = require('./src/routes/paymentHistories')
-const clientAccountStatus = require('./src/routes/clientAccountStatus')
+const availableAbonosRoutes = require('./src/routes/availableAbonos')
+const accountStatusRoutes = require('./src/routes/accountStatus')
+const clientStatusesRoutes = require('./src/routes/clientStatus')
+const availableServicesRoutes = require('./src/routes/availableServices')
+const localitiesRoutes = require('./src/routes/localities')
+const suscriptorDataRoutes = require('./src/routes/suscriptorData')
+const instalationDataRoutes = require('./src/routes/instalationData')
+const technicalServicesHistoryRoutes = require('./src/routes/technicalServicesHistory')
+const technicalServiceStatusRoutes = require('./src/routes/technicalServiceStatus')
+const technicalServicesRoutes = require('./src/routes/technicalServices')
+const paymentHistoriesRoutes = require('./src/routes/paymentHistories')
+const clientAccountStatusRoutes = require('./src/routes/clientAccountStatus')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(function(req, res, next) {
+app.use(function(_req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'GET,POST');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -39,18 +39,18 @@ app.use('/users', userRoutes);
 app.use('/cableTariffs', cableTariffRoutes);
 app.use('/internetTariffs', internetTariffRoutes);
 app.use('/availableCharges', availableChargesRoutes);
-app.use('/availableAbonos', availableAbonos);
-app.use('/accountStatus', accountStatus);
-app.use('/clientStatuses', clientStatuses);
-app.use('/availableServices', availableServices);
-app.use('/localities', localities);
-app.use('/suscriptorData', suscriptorData);
-app.use('/instalationData', instalationData);
-app.use('/technicalServicesHistory', technicalServicesHistory);
-app.use('/technicalServiceStatus', technicalServiceStatus);
-app.use('/technicalServices', technicalServices);
-app.use('/paymentHistories', paymentHistories);
-app.use('/clientAccountStatus', clientAccountStatus);
+app.use('/availableAbonos', availableAbonosRoutes);
+app.use('/accountStatus', accountStatusRoutes);
+app.use('/clientStatuses', clientStatusesRoutes);
+app.use('/availableServices', availableServicesRoutes);
+app.use('/localities', localitiesRoutes);
+app.use('/suscriptorData', suscriptorDataRoutes);
+app.use('/instalationData', instalationDataRoutes);
+app.use('/technicalServicesHistory', technicalServicesHistoryRoutes);
+app.use('/technicalServiceStatus', technicalServiceStatusRoutes);
+app.use('/technicalServices', technicalServicesRoutes);
+app.use('/paymentHistories', paymentHistoriesRoutes);
+app.use('/clientAccountStatus', clientAccountStatusRoutes);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
