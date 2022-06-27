@@ -34,21 +34,21 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/users', userRoutes);
-app.use('/cableTariffs', cableTariffRoutes);
-app.use('/internetTariffs', internetTariffRoutes);
-app.use('/availableCharges', availableChargesRoutes);
-app.use('/availableAbonos', availableAbonosRoutes);
-app.use('/accountStatus', accountStatusRoutes);
-app.use('/clientStatuses', clientStatusesRoutes);
-app.use('/availableServices', availableServicesRoutes);
-app.use('/localities', localitiesRoutes);
-app.use('/suscriptorData', suscriptorDataRoutes);
-app.use('/instalationData', instalationDataRoutes);
-app.use('/technicalServicesHistory', technicalServicesHistoryRoutes);
-app.use('/technicalServiceStatus', technicalServiceStatusRoutes);
-app.use('/technicalServices', technicalServicesRoutes);
-app.use('/paymentHistories', paymentHistoriesRoutes);
+app.use('/usuarios', userRoutes);
+app.use('/tarifasCable', cableTariffRoutes);
+app.use('/tarifasInternet', internetTariffRoutes);
+app.use('/cargosDisponibles', availableChargesRoutes);
+app.use('/bonosDisponibles', availableAbonosRoutes);
+app.use('/estatusCuenta', accountStatusRoutes);
+app.use('/estatusClientes', clientStatusesRoutes);
+app.use('/serviciosDisponibles', availableServicesRoutes);
+app.use('/localidades', localitiesRoutes);
+app.use('/informacionSuscriptor', suscriptorDataRoutes);
+app.use('/informacionInstalacion', instalationDataRoutes);
+app.use('/historialServiciosTecnicos', technicalServicesHistoryRoutes);
+app.use('/estatusServiciosTecnicos', technicalServiceStatusRoutes);
+app.use('/serviciosTecnicos', technicalServicesRoutes);
+app.use('/historialPagos', paymentHistoriesRoutes);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
