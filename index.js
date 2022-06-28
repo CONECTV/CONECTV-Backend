@@ -15,6 +15,7 @@ const availableAbonosRoutes = require('./src/routes/availableAbonos')
 const accountStatusRoutes = require('./src/routes/accountStatus')
 const clientStatusesRoutes = require('./src/routes/clientStatus')
 const availableServicesRoutes = require('./src/routes/availableServices')
+const clientAccountStatus = require('./src/routes/clientAccountStatus')
 const localitiesRoutes = require('./src/routes/localities')
 const suscriptorDataRoutes = require('./src/routes/suscriptorData')
 const instalationDataRoutes = require('./src/routes/instalationData')
@@ -49,6 +50,7 @@ app.use('/historialServiciosTecnicos', technicalServicesHistoryRoutes);
 app.use('/estatusServiciosTecnicos', technicalServiceStatusRoutes);
 app.use('/serviciosTecnicos', technicalServicesRoutes);
 app.use('/historialPagos', paymentHistoriesRoutes);
+app.use('/statusCuentaCliente', clientAccountStatus);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
