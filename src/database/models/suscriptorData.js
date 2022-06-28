@@ -14,15 +14,7 @@ const SuscriptorData = sequelize.define('suscriptorData', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    name:{
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    lastMaternalName:{
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    lastPaternalName:{
+    customerName:{
         type: Sequelize.TEXT,
         allowNull: false
     },
