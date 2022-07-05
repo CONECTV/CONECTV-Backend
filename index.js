@@ -1,4 +1,4 @@
-const sequelize = require('./src/database/configs/db_connection')
+const sequelize = require('./src/database/configs/connection')
 const hostname = '127.0.0.1';
 const port = 8000;
 
