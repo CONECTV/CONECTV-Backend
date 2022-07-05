@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../configs/db_connection');
+const sequelize = require('../configs/connection');
 
 const CableTariffs = sequelize.define('cableTariffs', {
     id: {
