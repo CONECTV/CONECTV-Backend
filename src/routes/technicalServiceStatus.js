@@ -4,7 +4,7 @@ const getTechnicalServicesStatus = require('../controllers/technicalServiceStatu
 
 const router = express.Router();
 
-router.post('/create', createTechnicalServiceStatus.createTechnicalServiceStatus);
-router.get('/get', getTechnicalServicesStatus.getTechnicalServicesStatus);
+router.post('/crear', createTechnicalServiceStatus.createTechnicalServiceStatus);
+router.get('/obtener', getTechnicalServicesStatus.getTechnicalServicesStatus);
 
 module.exports = router;

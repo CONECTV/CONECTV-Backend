@@ -4,7 +4,7 @@ const getInstalationData = require('../controllers/instalationData');
 
 const router = express.Router();
 
-router.post('/create', createInstalationData.createInstalationData);
-router.get('/get', getInstalationData.getInstalationData);
+router.post('/crear', createInstalationData.createInstalationData);
+router.get('/obtener', getInstalationData.getInstalationData);
 
 module.exports = router;

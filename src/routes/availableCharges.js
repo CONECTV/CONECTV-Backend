@@ -4,7 +4,7 @@ const getAvailableCharges = require('../controllers/availableCharges');
 
 const router = express.Router();
 
-router.post('/create', createAvailableCharges.createAvailableCharges);
-router.get('/get', getAvailableCharges.getAvailableCharges);
+router.post('/crear', createAvailableCharges.createAvailableCharges);
+router.get('/obtener', getAvailableCharges.getAvailableCharges);
 
 module.exports = router;

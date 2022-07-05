@@ -4,7 +4,7 @@ const getAccountStatuses = require('../controllers/accountStatus');
 
 const router = express.Router();
 
-router.post('/create', createAccountStatus.createAccountStatus);
-router.get('/get', getAccountStatuses.getAccountStatuses);
+router.post('/crear', createAccountStatus.createAccountStatus);
+router.get('/obtener', getAccountStatuses.getAccountStatuses);
 
 module.exports = router;

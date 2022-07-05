@@ -4,7 +4,7 @@ const getSuscriptorsData = require('../controllers/suscriptorData');
 
 const router = express.Router();
 
-router.post('/create', createSuscriptorData.createSuscriptorData);
-router.get('/get', getSuscriptorsData.getSuscriptorsData);
+router.post('/crear', createSuscriptorData.createSuscriptorData);
+router.get('/obtener', getSuscriptorsData.getSuscriptorsData);
 
 module.exports = router;

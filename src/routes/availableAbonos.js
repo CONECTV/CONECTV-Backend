@@ -4,7 +4,7 @@ const getAvailableAbonos = require('../controllers/availableAbonos');
 
 const router = express.Router();
 
-router.post('/create', createAvailableAbonos.createAvailableAbonos);
-router.get('/get', getAvailableAbonos.getAvailableAbonos);
+router.post('/crear', createAvailableAbonos.createAvailableAbonos);
+router.get('/obtener', getAvailableAbonos.getAvailableAbonos);
 
 module.exports = router;

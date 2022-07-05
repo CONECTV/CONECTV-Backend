@@ -4,7 +4,7 @@ const getClientStatuses = require('../controllers/clientStatus');
 
 const router = express.Router();
 
-router.post('/create', createClientStatus.createClientStatus);
-router.get('/get', getClientStatuses.getClientStatuses);
+router.post('/crear', createClientStatus.createClientStatus);
+router.get('/obtener', getClientStatuses.getClientStatuses);
 
 module.exports = router;

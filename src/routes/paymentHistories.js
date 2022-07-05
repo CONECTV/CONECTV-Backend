@@ -4,7 +4,7 @@ const getPaymentHistories = require('../controllers/paymentHistories');
 
 const router = express.Router();
 
-router.post('/create', createPaymentHistory.createPaymentHistory);
-router.get('/get', getPaymentHistories.getPaymentHistories);
+router.post('/crear', createPaymentHistory.createPaymentHistory);
+router.get('/obtener', getPaymentHistories.getPaymentHistories);
 
 module.exports = router;

@@ -4,7 +4,7 @@ const getCableTariffs = require('../controllers/cableTariffs');
 
 const router = express.Router();
 
-router.post('/create', createCableTariffs.createCableTariffs);
-router.get('/get', getCableTariffs.getCableTariffs);
+router.post('/crear', createCableTariffs.createCableTariffs);
+router.get('/obtener', getCableTariffs.getCableTariffs);
 
 module.exports = router;

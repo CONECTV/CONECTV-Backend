@@ -4,7 +4,7 @@ const getAvailableServices = require('../controllers/availableServices');
 
 const router = express.Router();
 
-router.post('/create', createAvailableService.createAvailableService);
-router.get('/get', getAvailableServices.getAvailableServices);
+router.post('/crear', createAvailableService.createAvailableService);
+router.get('/obtener', getAvailableServices.getAvailableServices);
 
 module.exports = router;

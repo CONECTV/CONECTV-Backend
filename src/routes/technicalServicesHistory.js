@@ -4,7 +4,7 @@ const getTechnicalServicesHistory = require('../controllers/technicalServicesHis
 
 const router = express.Router();
 
-router.post('/create', createTechnicalServiceHistory.createTechnicalServiceHistory);
-router.get('/get', getTechnicalServicesHistory.getTechnicalServicesHistory);
+router.post('/crear', createTechnicalServiceHistory.createTechnicalServiceHistory);
+router.get('/obtener', getTechnicalServicesHistory.getTechnicalServicesHistory);
 
 module.exports = router;

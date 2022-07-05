@@ -4,7 +4,7 @@ const getInternetTariffs = require('../controllers/internetTariffs');
 
 const router = express.Router();
 
-router.post('/create', createInternetTariffs.createInternetTariffs);
-router.get('/get', getInternetTariffs.getInternetTariffs);
+router.post('/crear', createInternetTariffs.createInternetTariffs);
+router.get('/obtener', getInternetTariffs.getInternetTariffs);
 
 module.exports = router;
