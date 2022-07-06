@@ -23,6 +23,8 @@ const technicalServicesHistoryRoutes = require('./src/routes/technicalServicesHi
 const technicalServiceStatusRoutes = require('./src/routes/technicalServiceStatus')
 const technicalServicesRoutes = require('./src/routes/technicalServices')
 const paymentHistoriesRoutes = require('./src/routes/paymentHistories')
+const authRoutes = require('./src/auth/routes/auth')
+const verifyToken = require('./src/auth/middleware/validateToken');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,22 +37,23 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use('/usuarios', userRoutes);
-app.use('/tarifasCable', cableTariffRoutes);
-app.use('/tarifasInternet', internetTariffRoutes);
-app.use('/cargosDisponibles', availableChargesRoutes);
-app.use('/bonosDisponibles', availableAbonosRoutes);
-app.use('/estatusCuenta', accountStatusRoutes);
-app.use('/estatusClientes', clientStatusesRoutes);
-app.use('/serviciosDisponibles', availableServicesRoutes);
-app.use('/localidades', localitiesRoutes);
-app.use('/informacionSuscriptor', suscriptorDataRoutes);
-app.use('/informacionInstalacion', instalationDataRoutes);
-app.use('/historialServiciosTecnicos', technicalServicesHistoryRoutes);
-app.use('/estatusServiciosTecnicos', technicalServiceStatusRoutes);
-app.use('/serviciosTecnicos', technicalServicesRoutes);
-app.use('/historialPagos', paymentHistoriesRoutes);
-app.use('/statusCuentaCliente', clientAccountStatus);
+app.use('/usuarios', verifyToken, userRoutes);
+app.use('/tarifasCable', verifyToken, cableTariffRoutes);
+app.use('/tarifasInternet', verifyToken, internetTariffRoutes);
+app.use('/cargosDisponibles', verifyToken, availableChargesRoutes);
+app.use('/bonosDisponibles', verifyToken, availableAbonosRoutes);
+app.use('/estatusCuenta',verifyToken, accountStatusRoutes);
+app.use('/estatusClientes',verifyToken, clientStatusesRoutes);
+app.use('/serviciosDisponibles',verifyToken, availableServicesRoutes);
+app.use('/localidades',verifyToken, localitiesRoutes);
+app.use('/informacionSuscriptor',verifyToken, suscriptorDataRoutes);
+app.use('/informacionInstalacion',verifyToken, instalationDataRoutes);
+app.use('/historialServiciosTecnicos',verifyToken, technicalServicesHistoryRoutes);
+app.use('/estatusServiciosTecnicos',verifyToken, technicalServiceStatusRoutes);
+app.use('/serviciosTecnicos',verifyToken, technicalServicesRoutes);
+app.use('/historialPagos',verifyToken, paymentHistoriesRoutes);
+app.use('/statusCuentaCliente',verifyToken, clientAccountStatus);
+app.use('/registro', authRoutes);
 
 app.listen(port, () => {
   console.log(`El servidor se está ejecutando en http://${hostname}:${port}/`);
