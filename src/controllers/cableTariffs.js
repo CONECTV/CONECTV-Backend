@@ -10,7 +10,7 @@ exports.createCableTariffs =  async (req, res) => {
         )
         res.status(201).send(`cable tariff ${req.body.name} was successfully created`);
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 }
 
@@ -19,7 +19,7 @@ exports.getCableTariffs  =  async (req, res) => {
         const cableTariffs = await CableTariffs.findAll();
         res.status(200).send(JSON.stringify(cableTariffs));
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 };
 
@@ -37,7 +37,7 @@ exports.updateCableTariffs = async (req, res) => {
             }
         })
 
-        res.status(200).send(`cable tariffs ${req.body.name} was successfully updated`);
+        res.status(200).send(`cable tariff ${req.body.name} was successfully updated`);
 
     } catch (error) {
         res.status(400).json({error})
