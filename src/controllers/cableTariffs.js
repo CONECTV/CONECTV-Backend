@@ -22,3 +22,24 @@ exports.getCableTariffs  =  async (req, res) => {
         console.log(error.message)
     }
 };
+
+exports.updateCableTariffs = async (req, res) => {
+    try {
+        const isCableTariffsExists =  await CableTariffs.findOne({ where: { id: Number(req.body.id) }})
+        if (!isCableTariffsExists) return res.status(400).json({error: 'CableTariffs not found'})
+
+        await CableTariffs.update({ 
+            name: req.body.name,
+            price: parseFloat(req.body.price)
+        },{
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`cable tariffs ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
