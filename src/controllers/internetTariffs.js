@@ -1,6 +1,6 @@
 const InternetTariffs = require('../database/models/internetTariffs')
 
-exports.createInternetTariffs =  async (req, res) => {
+exports.createInternetTariff =  async (req, res) => {
     try {
         const _internetTariffCreation =  await InternetTariffs.create(
             {
@@ -10,7 +10,7 @@ exports.createInternetTariffs =  async (req, res) => {
         )
         res.status(201).send(`internet tariff ${req.body.name} was successfully created`);
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 }
 
@@ -19,6 +19,27 @@ exports.getInternetTariffs  =  async (req, res) => {
         const internetTariffs = await InternetTariffs.findAll();
         res.status(200).send(JSON.stringify(internetTariffs));
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 };
+
+exports.updateInternetTariff = async (req, res) => {
+    try {
+        const isInternetTariffsExists =  await InternetTariffs.findOne({ where: { id: Number(req.body.id) }})
+        if (!isInternetTariffsExists) return res.status(400).json({error: 'InternetTariffs not found'})
+
+        await InternetTariffs.update({ 
+            name: req.body.name,
+            price: parseFloat(req.body.price)
+        },{
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`internet tariffs ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
