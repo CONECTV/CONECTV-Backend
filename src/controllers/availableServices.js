@@ -10,7 +10,7 @@ exports.createAvailableService =  async (req, res) => {
         )
         res.status(201).send(`available service ${req.body.name} was successfully created`);
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 }
 
@@ -19,6 +19,27 @@ exports.getAvailableServices  =  async (req, res) => {
         const availableServices = await AvailableServices.findAll();
         res.status(200).send(JSON.stringify(availableServices));
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 };
+
+exports.updateAvailableService = async (req, res) => {
+    try {
+        const isAvailableServiceExists =  await AvailableServices.findOne({ where: { id: Number(req.body.id) }})
+        if (!isAvailableServiceExists) return res.status(400).json({error: 'AvailableServices not found'})
+
+        await AvailableServices.update({ 
+            name: req.body.name,
+            monthlyPrice: parseFloat(req.body.monthlyPrice)
+        },{
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`avaliable service ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
