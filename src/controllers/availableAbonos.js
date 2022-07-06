@@ -1,8 +1,8 @@
 const AvailableAbono = require('../database/models/availableAbono')
 
-exports.createAvailableAbonos =  async (req, res) => {
+exports.createAvailableAbono =  async (req, res) => {
     try {
-        const _availableAbonosCreation =  await AvailableAbono.create(
+        const _availableAbonoCreation =  await AvailableAbono.create(
             {
                 name: req.body.name,
                 price: parseFloat(req.body.price)
@@ -10,7 +10,7 @@ exports.createAvailableAbonos =  async (req, res) => {
         )
         res.status(201).send(`available abono ${req.body.name} was successfully created`);
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 }
 
@@ -19,6 +19,27 @@ exports.getAvailableAbonos  =  async (req, res) => {
         const availableAbonos = await AvailableAbono.findAll();
         res.status(200).send(JSON.stringify(availableAbonos));
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 };
+
+exports.updateAvailableAbono = async (req, res) => {
+    try {
+        const isAvailableAbonoExists =  await AvailableAbono.findOne({ where: { id: Number(req.body.id) }})
+        if (!isAvailableAbonoExists) return res.status(400).json({error: 'AvailableAbono not found'})
+
+        await AvailableAbono.update({ 
+            name: req.body.name,
+            price: parseFloat(req.body.price)
+        },{
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`avaliable abono ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
