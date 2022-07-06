@@ -35,7 +35,7 @@ exports.updateClientStatus = async (req, res) => {
             }
         })
 
-        res.status(200).send(`client status ${req.body.name} was successfully updated`);
+        res.status(200).send(`client status ${req.body.state} was successfully updated`);
 
     } catch (error) {
         res.status(400).json({error})
