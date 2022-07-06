@@ -1,10 +1,12 @@
 const express = require('express');
-const createInternetTariffs = require('../controllers/internetTariffs');
+const createInternetTariff = require('../controllers/internetTariffs');
 const getInternetTariffs = require('../controllers/internetTariffs');
+const updateInternetTariff = require('../controllers/internetTariffs');
 
 const router = express.Router();
 
-router.post('/crear', createInternetTariffs.createInternetTariffs);
+router.post('/crear', createInternetTariff.createInternetTariff);
 router.get('/obtener', getInternetTariffs.getInternetTariffs);
+router.put('/actualizar', updateInternetTariff.updateInternetTariff);
 
 module.exports = router;
