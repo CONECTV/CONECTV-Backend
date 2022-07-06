@@ -10,7 +10,7 @@ exports.createTechnicalService =  async (req, res) => {
         )
         res.status(201).send(`Technical Services ${req.body.name} was successfully created`);
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 }
 
@@ -19,6 +19,26 @@ exports.getTechnicalServices =  async (req, res) => {
         const technicalServices = await TechnicalServices.findAll();
         res.status(200).send(JSON.stringify(technicalServices));
     } catch (error) {
-        console.log(error.message)
+        res.status(400).json({error})
     }
 };
+
+exports.updateTechnicalServices = async (req, res) => {
+    try {
+        const isTechnicalServiceExists =  await TechnicalServices.findOne({ where: { id: Number(req.body.id) }})
+        if (!isTechnicalServiceExists) return res.status(400).json({error: 'TechnicalServices not found'})
+
+        await TechnicalServices.update({ 
+            name: req.body.name,
+        },{
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`Technical service ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
