@@ -17,7 +17,8 @@ exports.createSuscriptorData =  async (req, res) => {
                 urlLocation: req.body.urlLocation,
                 telephone: Number(req.body.telephone),
                 emailAddress: req.body.emailAddress,
-                rfc: req.body.rfc
+                rfc: req.body.rfc,
+                rfcAddress: req.body.rfcAddress
             }
         )
         res.status(201).send(`suscriptor with contract ${req.body.contract} was successfully created`);
@@ -52,7 +53,8 @@ exports.updateSuscriptorData= async (req, res) => {
             urlLocation: req.body.urlLocation,
             telephone: Number(req.body.telephone),
             emailAddress: req.body.emailAddress,
-            rfc: req.body.rfc
+            rfc: req.body.rfc,
+            rfcAddress: req.body.rfcAddress
         },{
             where: { 
                 id: Number(req.body.id)

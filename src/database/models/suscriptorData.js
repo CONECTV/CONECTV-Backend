@@ -53,6 +53,10 @@ const SuscriptorData = sequelize.define('suscriptorData', {
     rfc:{
         type: Sequelize.TEXT,
         allowNull: false
+    },
+    rfcAddress: {
+        type: Sequelize.TEXT,
+        allowNull: false
     }
 });
 
