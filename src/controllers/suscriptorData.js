@@ -67,3 +67,30 @@ exports.updateSuscriptorData= async (req, res) => {
         res.status(400).json({error})
     }
 }
+
+
+exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
+    try {
+        function convertToEnglish(_condition){
+            var filters = {
+                'telefono': 'telephone',
+                'nombre': 'customerName',
+                'contrato': 'contract'
+            };
+            return filters[_condition];
+        }
+
+        async function getSuscriptorsData (type) {
+            async function exists(){
+                if (await SuscriptorData.findOne({ where: { [type]:req.body.search }})) return true;
+            }
+            if (await exists()) return await SuscriptorData.findAll({ where: { [type]: req.body.search }});
+            else res.status(400).json({error: `${type} suscriptor not found`});
+        }
+
+        var suscriptorsData = await getSuscriptorsData(convertToEnglish(req.body.type));
+        res.status(200).send(JSON.stringify(suscriptorsData));
+    } catch (error) {
+        res.status(400).json({error});
+    }
+};
