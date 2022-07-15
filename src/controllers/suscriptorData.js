@@ -70,32 +70,27 @@ exports.updateSuscriptorData= async (req, res) => {
 
 
 exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
-    const condition = req.body.type;
-    var suscriptorsData;
     try {
-        switch(condition) {
-            case 'contrato':
-                const isContractExists =  await SuscriptorData.findOne({ where: { contract: Number(req.body.search) }})
-                if (!isContractExists) return res.status(400).json({error: 'Contract suscriptor not found'})
-                suscriptorsData = await SuscriptorData.findAll({ where: { contract: Number(req.body.search)}})
-                break
-                
-            case 'nombre':
-                const isNombreExists =  await SuscriptorData.findOne({ where: { customerName: req.body.search }})
-                if (!isNombreExists) return res.status(400).json({error: 'Suscriptor not found'})
-                suscriptorsData = await SuscriptorData.findAll({ where: { customerName: req.body.search}})
-                break
+        function convertToEnglish(_condition){
+            var filters = {
+                'telefono': 'telephone',
+                'nombre': 'customerName',
+                'contrato': 'contract'
+            };
+            return filters[_condition];
+        }
 
-            case 'telefono':
-                const isTelefonoExists =  await SuscriptorData.findOne({ where: { telephone: Number(req.body.search) }})
-                if (!isTelefonoExists) return res.status(400).json({error: 'Telephone suscriptor not found'})
-                suscriptorsData = await SuscriptorData.findAll({ where: { telephone: Number(req.body.search) }})
-                break
-            default:
-                break
-        }       
+        async function getSuscriptorsData (type) {
+            async function exists(){
+                if (await SuscriptorData.findOne({ where: { [type]:req.body.search }})) return true;
+            }
+            if (await exists()) return await SuscriptorData.findAll({ where: { [type]: req.body.search }});
+            else res.status(400).json({error: `${type} suscriptor not found`});
+        }
+
+        var suscriptorsData = await getSuscriptorsData(convertToEnglish(req.body.type));
         res.status(200).send(JSON.stringify(suscriptorsData));
     } catch (error) {
-        res.status(400).json({error})
+        res.status(400).json({error});
     }
 };
