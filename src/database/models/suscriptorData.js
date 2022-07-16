@@ -12,7 +12,8 @@ const SuscriptorData = sequelize.define('suscriptorData', {
     },
     contract: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     customerName:{
         type: Sequelize.TEXT,
