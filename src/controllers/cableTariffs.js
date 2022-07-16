@@ -1,6 +1,6 @@
 const CableTariffs = require('../database/models/cableTariffs')
 
-exports.createCableTariffs =  async (req, res) => {
+exports.createCableTariff =  async (req, res) => {
     try {
         const _cableTariffCreation =  await CableTariffs.create(
             {
@@ -23,10 +23,10 @@ exports.getCableTariffs  =  async (req, res) => {
     }
 };
 
-exports.updateCableTariffs = async (req, res) => {
+exports.updateCableTariff = async (req, res) => {
     try {
-        const isCableTariffsExists =  await CableTariffs.findOne({ where: { id: Number(req.body.id) }})
-        if (!isCableTariffsExists) return res.status(400).json({error: 'CableTariffs not found'})
+        const isCableTariffExists =  await CableTariffs.findOne({ where: { id: Number(req.body.id) }})
+        if (!isCableTariffExists) return res.status(400).json({error: 'CableTariff not found'})
 
         await CableTariffs.update({ 
             name: req.body.name,
@@ -37,7 +37,25 @@ exports.updateCableTariffs = async (req, res) => {
             }
         })
 
-        res.status(200).send(`cable tariff ${req.body.name} was successfully updated`);
+        res.status(200).send(`Cable tariff ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
+
+exports.deleteCableTariff = async (req, res) => {
+    try {
+        const isCableTariffsExists =  await CableTariffs.findOne({ where: { id: Number(req.body.id) }})
+        if (!isCableTariffsExists) return res.status(400).json({error: 'CableTariffs not found'})
+
+        await CableTariffs.destroy({
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`cable tariff was successfully deleted`);
 
     } catch (error) {
         res.status(400).json({error})
