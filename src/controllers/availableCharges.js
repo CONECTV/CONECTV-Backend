@@ -37,7 +37,25 @@ exports.updateAvailableCharge = async (req, res) => {
             }
         })
 
-        res.status(200).send(`avaliable charge ${req.body.name} was successfully updated`);
+        res.status(200).send(`Avaliable charge ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
+
+exports.deleteAvailableCharge = async (req, res) => {
+    try {
+        const isAvailableChargesExists =  await AvailableCharges.findOne({ where: { id: Number(req.body.id) }})
+        if (!isAvailableChargesExists) return res.status(400).json({error: 'AvailableCharge not found'})
+
+        await AvailableCharges.destroy({
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`Avaliable charge ${req.body.name} was successfully updated`);
 
     } catch (error) {
         res.status(400).json({error})
