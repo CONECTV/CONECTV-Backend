@@ -55,7 +55,7 @@ exports.deleteAvailableCharge = async (req, res) => {
             }
         })
 
-        res.status(200).send(`Avaliable charge ${req.body.name} was successfully updated`);
+        res.status(200).send(`Avaliable charge ${req.body.name} was successfully deleted`);
 
     } catch (error) {
         res.status(400).json({error})
