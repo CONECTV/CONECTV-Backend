@@ -37,7 +37,25 @@ exports.updateAvailableAbono = async (req, res) => {
             }
         })
 
-        res.status(200).send(`avaliable abono ${req.body.name} was successfully updated`);
+        res.status(200).send(`Avaliable abono ${req.body.name} was successfully updated`);
+
+    } catch (error) {
+        res.status(400).json({error})
+    }
+}
+
+exports.deleteAvailableAbono = async (req, res) => {
+    try {
+        const isAvailableAbonoExists =  await AvailableAbono.findOne({ where: { id: Number(req.body.id) }})
+        if (!isAvailableAbonoExists) return res.status(400).json({error: 'AvailableAbono not found'})
+
+        await AvailableAbono.destroy({
+            where: { 
+                id: Number(req.body.id)
+            }
+        })
+
+        res.status(200).send(`Avaliable abono ${req.body.name} was successfully deleted`);
 
     } catch (error) {
         res.status(400).json({error})
