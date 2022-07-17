@@ -1,4 +1,8 @@
 const SuscriptorData = require('../database/models/suscriptorData');
+const Localities = require('../database/models/localities');
+const AvailableServices = require('../database/models/availableServices');
+const ClientStatus = require('../database/models/clientStatus');
+
 
 exports.createSuscriptorData =  async (req, res) => {
     try {
@@ -84,7 +88,18 @@ exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
             async function exists(){
                 if (await SuscriptorData.findOne({ where: { [type]:req.body.search }})) return true;
             }
-            if (await exists()) return await SuscriptorData.findAll({ where: { [type]: req.body.search }});
+            if (await exists()) return await SuscriptorData.findAll({
+                attributes: ['contract', 'customerName', 'street', 'colony', 'houseNumber', 'telephone'],
+                where: { 
+                    [type]: req.body.search 
+                },
+                include: [
+                    { model: Localities, attributes:['locality']},
+                    { model: AvailableServices, attributes:['name']},
+                    { model: ClientStatus, attributes:['state']}
+                ],
+                raw: true
+            });
             else res.status(400).json({error: `${type} suscriptor not found`});
         }
 
