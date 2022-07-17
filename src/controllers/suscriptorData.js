@@ -109,3 +109,15 @@ exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
         res.status(400).json({error});
     }
 };
+
+exports.getSuscriptorData  =  async (req, res) => {
+    try {
+        const isSuscriptorDataExists =  await SuscriptorData.findOne({ where: { contract: Number(req.body.contract) }})
+        if (!isSuscriptorDataExists) return res.status(400).json({error: 'SuscriptorData contract not found'})
+
+        const suscriptorsData = await SuscriptorData.findOne({ where: { contract: Number(req.body.contract) }})
+        res.status(200).send(suscriptorsData);
+    } catch (error) {
+        res.status(400).json({error})
+    }
+};
