@@ -11,6 +11,6 @@ router.post('/crear', createSuscriptorData.createSuscriptorData);
 router.get('/obtener', getSuscriptorsData.getSuscriptorsData);
 router.put('/actualizar', updateSuscriptorData.updateSuscriptorData);
 router.post('/search', getSuscriptorsDataSearchBar.getSuscriptorsDataSearchBar);
-router.get('/searchContrato', getSuscriptorData.getSuscriptorData);
+router.post('/searchContrato', getSuscriptorData.getSuscriptorData);
 
 module.exports = router;
