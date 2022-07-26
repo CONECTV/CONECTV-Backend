@@ -74,7 +74,8 @@ var models = [
   'availableServices',
   'availableCharges',
   'availableAbono',
-  'accountStatus'
+  'accountStatus',
+  'serviceSuscriptor'
 ];
 
 models.forEach(function (model) {
