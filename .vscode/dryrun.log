@@ -1,6 +1,6 @@
 make.exe --dry-run --always-make --keep-going --print-directory
-make: Entering directory 'c:/Users/LENOVO/Downloads/CONECTV Backend'
-make: Leaving directory 'c:/Users/LENOVO/Downloads/CONECTV Backend'
+make: Entering directory 'c:/Users/LENOVO/Downloads/CONECTV/CONECTV Backend'
+make: Leaving directory 'c:/Users/LENOVO/Downloads/CONECTV/CONECTV Backend'
  
 make: *** No rule to make target 'help'.
 
