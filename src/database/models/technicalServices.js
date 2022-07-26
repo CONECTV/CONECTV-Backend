@@ -12,7 +12,11 @@ const TechnicalServices = sequelize.define('technicalServices', {
     name: {
         type: Sequelize.TEXT,
         allowNull: false
-    }
+    },
+    price: {
+        type: Sequelize.FLOAT,
+        allowNull: false
+    },
 });
 
 module.exports = TechnicalServices;
