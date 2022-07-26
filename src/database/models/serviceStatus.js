@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/connection');
-const SuscriptorData = require('./suscriptorData');
+const ServiceSuscriptor = require('./serviceSuscriptor');
 
-const ClientStatus = sequelize.define('clientStatus', {
+const ServiceStatus = sequelize.define('serviceStatus', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -17,7 +17,7 @@ const ClientStatus = sequelize.define('clientStatus', {
 });
 
 // * Relationship between SuscriptorData and ClientStatus
-ClientStatus.hasOne(SuscriptorData);
-SuscriptorData.belongsTo(ClientStatus);
+ServiceStatus.hasOne(ServiceSuscriptor);
+ServiceSuscriptor.belongsTo(ServiceStatus);
 
-module.exports = ClientStatus;
+module.exports = ServiceStatus;

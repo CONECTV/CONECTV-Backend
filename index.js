@@ -11,7 +11,7 @@ const userRoutes = require('./src/routes/users')
 const availableChargesRoutes = require('./src/routes/availableCharges')
 const availableAbonosRoutes = require('./src/routes/availableAbonos')
 const accountStatusRoutes = require('./src/routes/accountStatus')
-const clientStatusesRoutes = require('./src/routes/clientStatus')
+const serviceStatusesRoutes = require('./src/routes/serviceStatus')
 const availableServicesRoutes = require('./src/routes/availableServices')
 const clientAccountStatus = require('./src/routes/clientAccountStatus')
 const localitiesRoutes = require('./src/routes/localities')
@@ -39,7 +39,7 @@ app.use('/usuarios', verifyToken, userRoutes);
 app.use('/cargosDisponibles', verifyToken, availableChargesRoutes);
 app.use('/bonosDisponibles', verifyToken, availableAbonosRoutes);
 app.use('/estatusCuenta',verifyToken, accountStatusRoutes);
-app.use('/estatusClientes',verifyToken, clientStatusesRoutes);
+app.use('/estatusClientes',verifyToken, serviceStatusesRoutes);
 app.use('/serviciosDisponibles',verifyToken, availableServicesRoutes);
 app.use('/localidades',verifyToken, localitiesRoutes);
 app.use('/informacionSuscriptor',verifyToken, suscriptorDataRoutes);
@@ -63,7 +63,7 @@ var models = [
   'paymentHistory',
   'localities',
   'instalationData',
-  'clientStatus',
+  'serviceStatus',
   'clientAcccountStatus',
   'availableServices',
   'availableCharges',

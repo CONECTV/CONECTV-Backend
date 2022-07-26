@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/connection');
+const Localities = require('./localities');
 
 const ServiceSuscriptor = sequelize.define('serviceSuscriptor', {
     id: {
@@ -48,4 +49,7 @@ const ServiceSuscriptor = sequelize.define('serviceSuscriptor', {
     }
 });
 
-module.exports = SuscriptorData;
+Localities.hasMany(ServiceSuscriptor);
+ServiceSuscriptor.hasOne(Localities);
+
+module.exports = ServiceSuscriptor;
