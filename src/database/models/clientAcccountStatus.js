@@ -4,6 +4,7 @@ const sequelize = require('../configs/connection');
 const AccountStatus = require('./accountStatus');
 const SuscriptorData = require('./suscriptorData');
 
+//TODO  CHANGE NAME TO BILLING
 const ClientAccountStatus = sequelize.define('clientAccountStatus', {
     id: {
         type: Sequelize.INTEGER,

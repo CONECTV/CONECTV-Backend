@@ -8,8 +8,6 @@ const cors = require('cors');
 const app = express()
 
 const userRoutes = require('./src/routes/users')
-const cableTariffRoutes = require('./src/routes/cableTriffs')
-const internetTariffRoutes = require('./src/routes/internetTariffs')
 const availableChargesRoutes = require('./src/routes/availableCharges')
 const availableAbonosRoutes = require('./src/routes/availableAbonos')
 const accountStatusRoutes = require('./src/routes/accountStatus')
@@ -38,8 +36,6 @@ app.use(function(req, res, next) {
 });
 
 app.use('/usuarios', verifyToken, userRoutes);
-app.use('/tarifasCable', verifyToken, cableTariffRoutes);
-app.use('/tarifasInternet', verifyToken, internetTariffRoutes);
 app.use('/cargosDisponibles', verifyToken, availableChargesRoutes);
 app.use('/bonosDisponibles', verifyToken, availableAbonosRoutes);
 app.use('/estatusCuenta',verifyToken, accountStatusRoutes);
@@ -66,11 +62,9 @@ var models = [
   'suscriptorData',
   'paymentHistory',
   'localities',
-  'internetTariffs',
   'instalationData',
   'clientStatus',
   'clientAcccountStatus',
-  'cableTariffs',
   'availableServices',
   'availableCharges',
   'availableAbono',
