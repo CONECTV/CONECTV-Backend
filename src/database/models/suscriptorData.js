@@ -24,8 +24,4 @@ const SuscriptorData = sequelize.define('suscriptorData', {
     }
 });
 
-// * Relationship between SuscriptorData and Localities
-Localities.hasMany(SuscriptorData);
-SuscriptorData.belongsTo(Localities);
-
 module.exports = SuscriptorData;
