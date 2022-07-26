@@ -3,6 +3,12 @@ const Sequelize = require('sequelize');
 const sequelize = require('../configs/connection');
 
 const ServiceSuscriptor = sequelize.define('serviceSuscriptor', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
     contract: {
         type: Sequelize.INTEGER,
         allowNull: false,
