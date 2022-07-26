@@ -20,4 +20,3 @@ install:
 rebuild:
 	@docker-compose down --remove-orphans
 	@docker-compose build --no-cache
-	@docker volume rm conectv-backend_mysql_data

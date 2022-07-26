@@ -4,7 +4,7 @@ exports.createInstalationData =  async (req, res) => {
     try {
         const _instalationDataCreation =  await InstalationData.create(
             {
-                suscriptorDatumId: Number(req.body.suscriptorDatumId),
+                serviceStatusId: Number(req.body.serviceStatusId),
                 instalationDate: new Date(req.body.instalationDate),
                 poleNumber: Number(req.body.poleNumber),
                 napNumber: Number(req.body.napNumber),

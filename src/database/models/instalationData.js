@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/connection');
-const SuscriptorData = require('./suscriptorData');
+const ServiceSuscriptor = require('./serviceSuscriptor');
 
 const InstalationData = sequelize.define('instalationData', {
     id: {
@@ -34,7 +34,7 @@ const InstalationData = sequelize.define('instalationData', {
     }
 });
 
-SuscriptorData.hasOne(InstalationData)
-InstalationData.belongsTo(SuscriptorData)
+ServiceSuscriptor.hasOne(InstalationData)
+InstalationData.belongsTo(ServiceSuscriptor)
 
 module.exports = InstalationData;

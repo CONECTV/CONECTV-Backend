@@ -1,7 +1,7 @@
 const SuscriptorData = require('../database/models/suscriptorData');
 const Localities = require('../database/models/localities');
 const AvailableServices = require('../database/models/availableServices');
-const ClientStatus = require('../database/models/clientStatus');
+const ClientStatus = require('../database/models/serviceStatus');
 
 
 exports.createSuscriptorData =  async (req, res) => {
