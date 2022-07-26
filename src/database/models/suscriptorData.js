@@ -10,36 +10,7 @@ const SuscriptorData = sequelize.define('suscriptorData', {
         allowNull: false,
         primaryKey: true
     },
-    contract: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: true
-    },
     customerName:{
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    colony:{
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    street:{
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    houseNumber: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    innerHouseNumber: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    observations: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    urlLocation:{
         type: Sequelize.TEXT,
         allowNull: false
     },
@@ -48,14 +19,6 @@ const SuscriptorData = sequelize.define('suscriptorData', {
         allowNull: false
     },
     emailAddress: {
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    rfc:{
-        type: Sequelize.TEXT,
-        allowNull: false
-    },
-    rfcAddress: {
         type: Sequelize.TEXT,
         allowNull: false
     }
