@@ -20,7 +20,7 @@ const instalationDataRoutes = require('./src/routes/instalationData')
 const technicalServicesHistoryRoutes = require('./src/routes/technicalServicesHistory')
 const technicalServiceStatusRoutes = require('./src/routes/technicalServiceStatus')
 const technicalServicesRoutes = require('./src/routes/technicalServices')
-const paymentHistoriesRoutes = require('./src/routes/paymentHistories')
+const paymentHistoryRoutes = require('./src/routes/paymentHistory')
 const authRoutes = require('./src/auth/routes/auth')
 const verifyToken = require('./src/auth/middleware/validateToken');
 
@@ -47,7 +47,7 @@ app.use('/informacionInstalacion',verifyToken, instalationDataRoutes);
 app.use('/historialServiciosTecnicos',verifyToken, technicalServicesHistoryRoutes);
 app.use('/estatusServiciosTecnicos',verifyToken, technicalServiceStatusRoutes);
 app.use('/serviciosTecnicos',verifyToken, technicalServicesRoutes);
-app.use('/historialPagos',verifyToken, paymentHistoriesRoutes);
+app.use('/historialPagos',verifyToken, paymentHistoryRoutes);
 app.use('/statusCuentaCliente',verifyToken, clientAccountStatus);
 app.use('/registro', authRoutes);
 

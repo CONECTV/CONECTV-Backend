@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const sequelize = require('../configs/connection');
-const SuscriptorData = require('./suscriptorData');
+const ServiceSuscriptor = require('./serviceSuscriptor');
 
 const PaymentHistory = sequelize.define('paymentHistory', {
     id: {
@@ -24,8 +24,7 @@ const PaymentHistory = sequelize.define('paymentHistory', {
     }
 });
 
-SuscriptorData.hasMany(PaymentHistory);
-PaymentHistory.belongsTo(SuscriptorData);
-
+ServiceSuscriptor.hasMany(PaymentHistory);
+PaymentHistory.belongsTo(ServiceSuscriptor);
 
 module.exports = PaymentHistory;

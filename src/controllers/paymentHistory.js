@@ -1,10 +1,12 @@
 const PaymentHistory = require('../database/models/paymentHistory');
+const SuscriptorData = require('../database/models/suscriptorData');
 
 exports.createPaymentHistory =  async (req, res) => {
     try {
         const _paymentHistoryCreation =  await PaymentHistory.create(
             {
-                suscriptorDatumId: Number(req.body.suscriptorDatumId),
+                suscriptorDataId: Number(req.body.suscriptorDataId),
+                serviceSuscriptorId: Number(req.body.serviceSuscriptorId),
                 concept: req.body.concept,
                 total: parseFloat(req.body.total),
                 paymentDate: new Date(req.body.paymentDate),
@@ -16,7 +18,7 @@ exports.createPaymentHistory =  async (req, res) => {
     }
 }
 
-exports.getPaymentHistories =  async (req, res) => {
+exports.getPaymentHistory =  async (req, res) => {
     try {
         const paymentHistories = await PaymentHistory.findAll();
         res.status(200).send(JSON.stringify(paymentHistories));
@@ -30,7 +32,9 @@ exports.updatePaymentHistory = async (req, res) => {
         const isPaymentHistoryExists =  await PaymentHistory.findOne({ where: { id: Number(req.body.id) }})
         if (!isPaymentHistoryExists) return res.status(400).json({error: 'PaymentHistory not found'})
 
-        await PaymentHistory.update({ 
+        await PaymentHistory.update({
+            suscriptorDataId: Number(req.body.suscriptorDataId),
+            serviceSuscriptorId: Number(req.body.serviceSuscriptorId), 
             concept: req.body.concept,
             total: parseFloat(req.body.total),
             paymentDate: new Date(req.body.paymentDate),
