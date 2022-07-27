@@ -25,6 +25,6 @@ const SuscriptorData = sequelize.define('suscriptorData', {
 });
 
 SuscriptorData.hasMany(ServiceSuscriptor);
-ServiceSuscriptor.hasOne(SuscriptorData);
+ServiceSuscriptor.belongsTo(SuscriptorData);
 
 module.exports = SuscriptorData;
