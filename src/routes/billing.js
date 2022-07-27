@@ -1,12 +1,12 @@
 const express = require('express');
-const createBillingStatus = require('../controllers/billing');
-const getBillingStatus = require('../controllers/billing');
-const updateBillingStatus = require('../controllers/billing');
+const createBilling = require('../controllers/billing');
+const getBillings = require('../controllers/billing');
+const updateBilling = require('../controllers/billing');
 
 const router = express.Router();
 
-router.post('/crear', createBillingStatus.createBillingStatus);
-router.get('/obtener', getBillingStatus.getBillingStatus);
-router.put('/actualizar', updateBillingStatus.updateBillingStatus);
+router.post('/crear', createBilling.createBilling);
+router.get('/obtener', getBillings.getBillings);
+router.put('/actualizar', updateBilling.updateBilling);
 
 module.exports = router;
