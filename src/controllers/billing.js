@@ -1,10 +1,10 @@
 const Billing = require('../database/models/billing');
 
-exports.createBillingStatus =  async (req, res) => {
+exports.createBilling =  async (req, res) => {
     try {
         const _billingCreation =  await Billing.create(
             {
-                suscriptorDatumId: Number(req.body.suscriptorDatumId),
+                serviceSuscriptorId: Number(req.body.serviceSuscriptorId),
                 accountStatusId: Number(req.body.accountStatusId),
                 total: parseFloat(req.body.total),
             }
@@ -15,7 +15,7 @@ exports.createBillingStatus =  async (req, res) => {
     }
 }
 
-exports.getBillingStatus =  async (req, res) => {
+exports.getBillings =  async (req, res) => {
     try {
         const billing = await Billing.findAll();
         res.status(200).send(JSON.stringify(billing));
@@ -24,7 +24,7 @@ exports.getBillingStatus =  async (req, res) => {
     }
 };
 
-exports.updateBillingStatus = async (req, res) => {
+exports.updateBilling = async (req, res) => {
     try {
         const isBillingExists =  await Billing.findOne({ where: { id: Number(req.body.id) }})
         if (!isBillingExists) return res.status(400).json({error: 'Billing not found'})
