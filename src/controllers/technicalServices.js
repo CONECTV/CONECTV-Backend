@@ -6,6 +6,7 @@ exports.createTechnicalService =  async (req, res) => {
             {
                 technicalServicesHistoryId: Number(req.body.technicalServicesHistoryId),
                 name: req.body.name,
+                price: req.body.price
             }
         )
         res.status(201).send(`Technical Services ${req.body.name} was successfully created`);
@@ -30,6 +31,7 @@ exports.updateTechnicalServices = async (req, res) => {
 
         await TechnicalServices.update({ 
             name: req.body.name,
+            price: req.body.price
         },{
             where: { 
                 id: Number(req.body.id)
