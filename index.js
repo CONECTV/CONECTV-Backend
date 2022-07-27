@@ -21,6 +21,7 @@ const technicalServicesHistoryRoutes = require('./src/routes/technicalServicesHi
 const technicalServiceStatusRoutes = require('./src/routes/technicalServiceStatus')
 const technicalServicesRoutes = require('./src/routes/technicalServices')
 const paymentHistoriesRoutes = require('./src/routes/paymentHistories')
+const serviceSuscriptorRoutes = require('./src/routes/serviceSuscriptor')
 const authRoutes = require('./src/auth/routes/auth')
 const verifyToken = require('./src/auth/middleware/validateToken');
 
@@ -39,7 +40,7 @@ app.use('/usuarios', verifyToken, userRoutes);
 app.use('/cargosDisponibles', verifyToken, availableChargesRoutes);
 app.use('/bonosDisponibles', verifyToken, availableAbonosRoutes);
 app.use('/estatusCuenta',verifyToken, accountStatusRoutes);
-app.use('/estatusClientes',verifyToken, serviceStatusesRoutes);
+app.use('/estatusServicio',verifyToken, serviceStatusesRoutes);
 app.use('/serviciosDisponibles',verifyToken, availableServicesRoutes);
 app.use('/localidades',verifyToken, localitiesRoutes);
 app.use('/informacionSuscriptor',verifyToken, suscriptorDataRoutes);
@@ -49,6 +50,7 @@ app.use('/estatusServiciosTecnicos',verifyToken, technicalServiceStatusRoutes);
 app.use('/serviciosTecnicos',verifyToken, technicalServicesRoutes);
 app.use('/historialPagos',verifyToken, paymentHistoriesRoutes);
 app.use('/statusCuentaCliente',verifyToken, clientAccountStatus);
+app.use('/serviciosSuscriptor',verifyToken, serviceSuscriptorRoutes);
 app.use('/registro', authRoutes);
 
 app.listen(port, () => {
