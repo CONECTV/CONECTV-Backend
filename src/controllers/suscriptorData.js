@@ -3,29 +3,16 @@ const Localities = require('../database/models/localities');
 const AvailableServices = require('../database/models/availableServices');
 const ClientStatus = require('../database/models/serviceStatus');
 
-
 exports.createSuscriptorData =  async (req, res) => {
     try {
         const _suscriptorDataCreation =  await SuscriptorData.create(
             {
-                localityId: Number(req.body.localityId),
-                availableServiceId: Number(req.body.availableServiceId),
-                clientStatusId: Number(req.body.clientStatusId),
-                contract: Number(req.body.contract),
                 customerName: req.body.customerName,
-                colony: req.body.colony,
-                street: req.body.street,
-                houseNumber: Number(req.body.houseNumber),
-                innerHouseNumber: Number(req.body.innerHouseNumber),
-                observations: req.body.observations,
-                urlLocation: req.body.urlLocation,
                 telephone: Number(req.body.telephone),
-                emailAddress: req.body.emailAddress,
-                rfc: req.body.rfc,
-                rfcAddress: req.body.rfcAddress
+                emailAddress: req.body.emailAddress
             }
         )
-        res.status(201).send(`suscriptor with contract ${req.body.contract} was successfully created`);
+        res.status(201).send(`suscriptor ${req.body.customerName} was successfully created`);
     } catch (error) {
         res.status(400).json({error})
     }
@@ -47,31 +34,21 @@ exports.updateSuscriptorData= async (req, res) => {
         if (!isSuscriptorDataExists) return res.status(400).json({error: 'SuscriptorData not found'})
 
         await SuscriptorData.update({ 
-            contract: Number(req.body.contract),
             customerName: req.body.customerName,
-            colony: req.body.colony,
-            street: req.body.street,
-            houseNumber: Number(req.body.houseNumber),
-            innerHouseNumber: Number(req.body.innerHouseNumber),
-            observations: req.body.observations,
-            urlLocation: req.body.urlLocation,
             telephone: Number(req.body.telephone),
-            emailAddress: req.body.emailAddress,
-            rfc: req.body.rfc,
-            rfcAddress: req.body.rfcAddress
+            emailAddress: req.body.emailAddress
         },{
             where: { 
                 id: Number(req.body.id)
             }
         })
 
-        res.status(200).send(`suscriptor with contract ${req.body.contract} was successfully created`);
+        res.status(200).send(`suscriptor ${req.body.customerName} was successfully created`);
 
     } catch (error) {
         res.status(400).json({error})
     }
 }
-
 
 exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
     try {
@@ -79,7 +56,6 @@ exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
             var filters = {
                 'telefono': 'telephone',
                 'nombre': 'customerName',
-                'contrato': 'contract'
             };
             return filters[_condition];
         }
@@ -89,16 +65,9 @@ exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
                 if (await SuscriptorData.findOne({ where: { [type]:req.body.search }})) return true;
             }
             if (await exists()) return await SuscriptorData.findAll({
-                attributes: ['contract', 'customerName', 'street', 'colony', 'houseNumber', 'telephone'],
                 where: { 
                     [type]: req.body.search 
-                },
-                include: [
-                    { model: Localities, attributes:['locality']},
-                    { model: AvailableServices, attributes:['name']},
-                    { model: ClientStatus, attributes:['state']}
-                ],
-                raw: true
+                }
             });
             else res.status(400).json({error: `${type} suscriptor not found`});
         }
@@ -110,14 +79,3 @@ exports.getSuscriptorsDataSearchBar  =  async (req, res) => {
     }
 };
 
-exports.getSuscriptorData  =  async (req, res) => {
-    try {
-        const isSuscriptorDataExists =  await SuscriptorData.findOne({ where: { contract: Number(req.body.contract) }})
-        if (!isSuscriptorDataExists) return res.status(400).json({error: 'SuscriptorData contract not found'})
-
-        const suscriptorsData = await SuscriptorData.findOne({ where: { contract: Number(req.body.contract) }})
-        res.status(200).send(suscriptorsData);
-    } catch (error) {
-        res.status(400).json({error})
-    }
-};
