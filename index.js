@@ -13,7 +13,7 @@ const availableAbonosRoutes = require('./src/routes/availableAbonos')
 const accountStatusRoutes = require('./src/routes/accountStatus')
 const serviceStatusesRoutes = require('./src/routes/serviceStatus')
 const availableServicesRoutes = require('./src/routes/availableServices')
-const clientAccountStatus = require('./src/routes/clientAccountStatus')
+const billing = require('./src/routes/billing')
 const localitiesRoutes = require('./src/routes/localities')
 const suscriptorDataRoutes = require('./src/routes/suscriptorData')
 const instalationDataRoutes = require('./src/routes/instalationData')
@@ -49,7 +49,7 @@ app.use('/historialServiciosTecnicos',verifyToken, technicalServicesHistoryRoute
 app.use('/estatusServiciosTecnicos',verifyToken, technicalServiceStatusRoutes);
 app.use('/serviciosTecnicos',verifyToken, technicalServicesRoutes);
 app.use('/historialPagos',verifyToken, paymentHistoriesRoutes);
-app.use('/statusCuentaCliente',verifyToken, clientAccountStatus);
+app.use('/facturacion',verifyToken, billing);
 app.use('/serviciosSuscriptor',verifyToken, serviceSuscriptorRoutes);
 app.use('/registro', authRoutes);
 
@@ -66,7 +66,7 @@ var models = [
   'localities',
   'instalationData',
   'serviceStatus',
-  'clientAcccountStatus',
+  'billing',
   'availableServices',
   'availableCharges',
   'availableAbono',

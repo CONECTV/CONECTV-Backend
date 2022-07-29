@@ -1,11 +1,12 @@
 const Sequelize = require('sequelize');
-
+// Client account status
 const sequelize = require('../configs/connection');
 const AccountStatus = require('./accountStatus');
-const SuscriptorData = require('./suscriptorData');
+const ServiceSuscriptor = require('./serviceSuscriptor');
+
 
 //TODO  CHANGE NAME TO BILLING
-const ClientAccountStatus = sequelize.define('clientAccountStatus', {
+const Billing = sequelize.define('billing', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -18,10 +19,10 @@ const ClientAccountStatus = sequelize.define('clientAccountStatus', {
     }
 });
 
-SuscriptorData.hasOne(ClientAccountStatus)
-ClientAccountStatus.belongsTo(SuscriptorData)
+ServiceSuscriptor.hasMany(Billing)
+Billing.belongsTo(ServiceSuscriptor)
 
-AccountStatus.hasMany(ClientAccountStatus);
-ClientAccountStatus.belongsTo(AccountStatus);
+AccountStatus.hasMany(Billing);
+Billing.hasOne(AccountStatus);
 
-module.exports = ClientAccountStatus;
+module.exports = Billing;
